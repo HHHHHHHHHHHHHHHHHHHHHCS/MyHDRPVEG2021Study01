@@ -25,7 +25,7 @@ namespace Sample01.Scripts
 			var bf = new GraphicsBuffer(GraphicsBuffer.Target.Structured,
 				pointArray.Length, sizeof(float) * 3);
 			bf.SetData(pointArray);
-			return buffer;
+			return bf;
 		}
 
 		private void OnDisable()

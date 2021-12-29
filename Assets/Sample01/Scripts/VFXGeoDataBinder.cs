@@ -8,10 +8,10 @@ namespace Sample01.Scripts
 	[VFXBinder("GeoVfx/GeoData")]
 	public class VFXGeoDataBinder : VFXBinderBase
 	{
-		public GeoData source = null;
-
 		[VFXPropertyBinding("UnityEngine.GraphicsBuffer"), SerializeField]
-		private ExposedProperty property = "DataSet";
+		private ExposedProperty property = "Data Set";
+		
+		public GeoData source = null;
 
 		public string Property
 		{
@@ -23,7 +23,12 @@ namespace Sample01.Scripts
 			=> source != null && component.HasGraphicsBuffer(property);
 
 		public override void UpdateBinding(VisualEffect component)
-			=> component.SetGraphicsBuffer(property, source.Buffer);
+		{
+			
+			component.SetGraphicsBuffer(property, source.Buffer);
+			// Debug.Log(source.Buffer.count);
+
+		}
 
 		public override string ToString()
 			=> $"GeoData : '{property}' -> {(source != null ? source.name : "(null)")}";
