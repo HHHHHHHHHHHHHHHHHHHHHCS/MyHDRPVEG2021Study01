@@ -185,8 +185,8 @@ namespace Sample08.Scripts
 
 			texture.SetPixels(colorArray);
 			texture.Apply();
-			vfx.SetTexture("_Position", texture);
-			vfx.SetInt("_Count", texture.width);
+			vfx.SetTexture("Positions", texture);
+			vfx.SetInt("Count", texture.width);
 		}
 	}
 }
