@@ -33,6 +33,8 @@ namespace Sample08.Scripts
 		private VisualEffect vfx;
 		private Texture2D texture;
 
+		private string lastWord;
+		
 		private void Start()
 		{
 			vfx = gameObject.GetComponent<VisualEffect>();
@@ -64,7 +66,7 @@ namespace Sample08.Scripts
 					for (var j = 0; j < stroke.Count - 1; j++)
 					{
 						shape.startPoints.Add(stroke[j]);
-						shape.startPoints.Add(stroke[j + 1]);
+						shape.endPoints.Add(stroke[j + 1]);
 					}
 				}
 			}
@@ -165,6 +167,11 @@ namespace Sample08.Scripts
 
 		private void DrawWord(string word)
 		{
+			if (word == lastWord)
+			{
+				return;
+			}
+			
 			var shape = BuildWord(word);
 			shape = AlignShapeCenter(shape);
 			var colorArray = BuildColorArray(shape);
@@ -186,7 +193,8 @@ namespace Sample08.Scripts
 			texture.SetPixels(colorArray);
 			texture.Apply();
 			vfx.SetTexture("Positions", texture);
-			vfx.SetInt("Count", texture.width);
+			vfx.SetUInt("Count", (uint) texture.width);
+			lastWord = word;
 		}
 	}
 }
