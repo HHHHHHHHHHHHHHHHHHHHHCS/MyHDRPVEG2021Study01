@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.VFX;
+using Debug = UnityEngine.Debug;
 
 namespace Sample08.Scripts
 {
@@ -34,7 +36,7 @@ namespace Sample08.Scripts
 		private Texture2D texture;
 
 		private string lastWord;
-		
+
 		private void Start()
 		{
 			vfx = gameObject.GetComponent<VisualEffect>();
@@ -171,7 +173,7 @@ namespace Sample08.Scripts
 			{
 				return;
 			}
-			
+
 			var shape = BuildWord(word);
 			shape = AlignShapeCenter(shape);
 			var colorArray = BuildColorArray(shape);
